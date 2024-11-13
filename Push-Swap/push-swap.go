@@ -18,7 +18,7 @@ func main() {
 	a := make([]int, len(arg))
 
 	//convert string to int
-	a, err := fn.Basic(a, arg)
+	a, err := fn.StringToInt(a, arg)
 	if err != nil {
 		return
 	}
@@ -78,4 +78,5 @@ func pushSwap(a []int) {
 	for _, str := range result {
 		fmt.Println(str)
 	}
+	fmt.Println(a)
 }

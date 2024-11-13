@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-func Basic(a []int, arg []string) ([]int, error) {
+func StringToInt(a []int, arg []string) ([]int, error) {
 	for index, str := range arg {
 		nbr, err := strconv.Atoi(str)
 		if err != nil {
