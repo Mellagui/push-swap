@@ -10,16 +10,13 @@ import (
 )
 
 func main() {
-	// Init variables
 	operations := []string{}
 	arg := []string{}
 
-	// Create a new scanner that reads from standard input
-	if len(os.Args[1:]) == 0 {
+	if len(os.Args[1:]) == 0 || len(os.Args) > 2 {
 		return
 	}
 	scanner := bufio.NewScanner(os.Stdin)
-	//fmt.Println("Enter text (press Ctrl+D to end):")
 
 	arg = strings.Split(os.Args[1], " ")
 	a := make([]int, len(arg))
@@ -45,7 +42,7 @@ func main() {
 	}
 
 	if len(operations) == 0 {
-		fmt.Println("Error") //////
+		fmt.Println("Error")
 		return
 	} else if len(operations) == 1 {
 		operations = strings.Split(operations[0], "\\n")
@@ -55,7 +52,6 @@ func main() {
 		operations = operations[:len(operations)-1]
 	}
 
-	// Check for errors during scanning
 	if err := scanner.Err(); err != nil {
 		fmt.Fprintln(os.Stderr, "Error reading input:", err)
 	}
@@ -86,7 +82,7 @@ func main() {
 		case "rrr":
 			a, b = fn.Rrr(a, b)
 		default:
-			fmt.Println("Error") ///////////////
+			fmt.Println("Error")
 			return
 		}
 	}

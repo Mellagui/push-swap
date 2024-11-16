@@ -16,6 +16,7 @@ func StringToInt(a []int, arg []string) ([]int, error) {
 	}
 	return a, nil
 }
+
 func Duplicates(a []int) bool {
 	for i := 0; i < len(a); i++ {
 		for j := i + 1; j < len(a); j++ {

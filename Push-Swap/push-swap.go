@@ -78,5 +78,4 @@ func pushSwap(a []int) {
 	for _, str := range result {
 		fmt.Println(str)
 	}
-	fmt.Println(a)
 }
