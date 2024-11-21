@@ -38,39 +38,43 @@ func pushSwap(a []int) {
 	lenMax := len(a)
 	result := []string{}
 
-	for !fn.IfSorted(a) && len(a) > 1 {
+	for !fn.IfSorted(a) {
 		mid := len(a) / 2
 		index := fn.FindMinNbrIndex(a)
 
-		if index == 0 {
-			a, b = fn.Pb(a, b)
-			result = append(result, "pb")
-		} else if index < mid && a[1] == a[index] && a[1] < a[0] {
-			a = fn.Sa(a)
-			result = append(result, "sa")
-		} else if index < mid {
-			if lenMax > 4 {
-				a = fn.Ra(a)
-				result = append(result, "ra")
-			} else {
-				a = fn.Rra(a)
-				result = append(result, "rra")
+		if len(a) == 3 {
+			for !fn.IfSorted(a) {
+				if a[0] > a[1] && a[0] > a[2] {
+					a = fn.Ra(a)
+					result = append(result, "ra")
+				} else if a[0] > a[1] {
+					a = fn.Sa(a)
+					result = append(result, "sa")
+				} else {
+					a = fn.Rra(a)
+					result = append(result, "rra")
+				}
 			}
-		} else if a[1] == a[index] && a[1] < a[0] {
-			a = fn.Sa(a)
-			result = append(result, "sa")
 		} else {
-			if lenMax > 4 {
+			if index == 0 {
+				a, b = fn.Pb(a, b)
+				result = append(result, "pb")
+			} else if index < mid {
+				if a[1] == a[index] && a[1] < a[0] {
+					a = fn.Sa(a)
+					result = append(result, "sa")
+				} else {
+					a = fn.Ra(a)
+					result = append(result, "ra")
+				}
+			} else {
 				a = fn.Rra(a)
 				result = append(result, "rra")
-			} else {
-				a = fn.Ra(a)
-				result = append(result, "ra")
 			}
 		}
 	}
 
-	for len(a) != lenMax && len(b) > 0 {
+	for len(a) != lenMax {
 		a, b = fn.Pa(a, b)
 		result = append(result, "pa")
 	}

@@ -37,7 +37,6 @@ func main() {
 
 	// Loop through each line of input
 	for scanner.Scan() {
-		// Print the line that was read
 		operations = append(operations, scanner.Text())
 	}
 
